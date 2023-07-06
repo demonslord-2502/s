@@ -1,0 +1,29 @@
+[analyst@secOps]# cd ./lab.support.files/pcaps
+
+[analyst@secOps pcaps]# ls -l
+
+[analyst@secOps pcaps]# wireshark-gtk nimda.download.pcap
+
+
+Wiresharkh
+Step 4: Check HTTP and check host and full URL to download the malware file
+
+Step 5: right click on TCP which shows top on the list. Then click on Follow TCP 
+Stream
+
+Step 6: Check the original file name in the Follow TCP Stream window
+
+Step 7: Now we need to download and check that file by uploading to an online 
+virustotal website.
+
+Find exe file from HTTP>click file> select export obj > Select exe File >Save as > 
+Select Folder> Save
+
+[analyst@secOps pcaps]# ls -l
+
+[analyst@secOps pcaps]# file W32.Nimda.Amm.exe
+
+
+
+
+

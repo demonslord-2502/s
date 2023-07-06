@@ -1,0 +1,60 @@
+Install and Configure GrayLog on Linux
+
+#Install Java and Els
+
+sudo nano /etc/elasticsearch/elasticsearch.yml
+
+#Then, uncomment the line and 
+below add this line “action.auto_create_index: false” then save
+
+“sudo systemctl daemon-reload”
+“sudo systemctl start elasticsearch”
+“sudo systemctl enable elasticsearch”
+
+curl -X GET http://localhost:9200 
+
+
+Part 2: Install MongoDB 
+
+sudo apt install -y mongodb-server
+
+sudo systemctl start mongodb”
+“sudo systemctl enable mongodb
+
+
+Part 3: Install GrayLog Server 
+wget https://packages.graylog2.org/repo/packages/graylog-4.2-
+repository_latest.deb
+
+sudo dpkg -i graylog-3.3-repository_latest.deb
+
+sudo apt update
+
+“sudo apt install -y graylog-server”
+
+sudo apt install pwgen
+
+“pwgen -N 1 -s 96”
+
+sudo nano /etc/graylog/server/server.conf
+
+“echo -n password | sha256sum”
+
+sudo nano /etc/graylog/server/server.conf
+
+
+sudo gedit /etc/graylog/server/server.conf
+
+Put http_bind_address = 192.168.0.10:9000
+http_external_uri = http://public_ip:9000/
+
+Step 2: Start and enable the Graylog service.
+Place the below command 
+“sudo systemctl daemon-reload”
+“sudo systemctl start graylog-server”
+“sudo systemctl enable graylog-server”
+
+
+sudo tail -f /var/log/graylog-server/server.log
+
+http://ip.add.re.ss:9000” type in browser

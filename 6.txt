@@ -1,0 +1,29 @@
+Configure your Linux system to send syslog messages to a syslog server and Read them.
+
+Kali Linux vm
+
+sudo apt-get install rsyslog
+
+sudo nano /etc/rsyslog.conf
+
+Step 4: Add above lines at the end of the file
+@192.168.137.50:514
+*.* @@192.168.137.50:514
+
+Step 5: For the end add these following variables in case when the rsyslog server goes 
+down.
+@ActionQueueFileName queue
+@ActionQueueMaxDiskSpace 1g
+@ActionQueueSaveOnShutdown on
+@ActionQueueType LinkedList
+@ActionResumeRetryCount -1
+
+sudo systemctl restart rsyslog
+
+
+Ubuntu vm
+sudo tail -f /var/log/kali/rsyslogd.log
+
+
+
+

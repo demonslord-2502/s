@@ -1,0 +1,19 @@
+Install and Run Splunk on Linux
+
+Ubuntu vm
+
+cd /tmp && wget 
+https://download.splunk.com/products/splunk/releases/7.1.1/linux/splunk-7.1.1-
+8f0ead9ec3db-linux-2.6-amd64.deb
+
+sudo dpkg -i splunk-7.1.1-8f0ead9ec3db-linux-2.6-amd64.deb
+
+sudi /opt/splunk/bin/splunk enable boot-tart "press tab"
+
+sudo service splunk start
+
+sudo service splunk status
+
+Step 6: Splunk will be started at port 8000. You can access the application via URL 
+“http://localhost:8000/“. To logged in into the app enter username as “admin” then 
+enter your password. In my case the password is “admin!123

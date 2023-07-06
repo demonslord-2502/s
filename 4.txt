@@ -1,0 +1,17 @@
+Step 1: Open Wireshark and start a Wireshark capture by double clicking a network interface with traffic
+
+Step 2: At the Command Prompt, enter ipconfig /flushdns clear the DNS cache
+
+Step 3: Enter nslookup at the prompt to enter the nslookup interactive mode
+
+Step 4: Enter the domain name of a website. The domain name www.cisco.com
+
+Step 5: type exit in prompt it will exit the nslookup
+
+
+Part 2: Explore DNS Query Traffic
+
+Step 1: Enter udp.port == 53 in the filter box and click the arrow (or press enter) to display only DNS packets.
+
+The IP and MAC addresses captured in the Wireshark results are the same as the addresses listed in arp – a and ipconfig /all command.
+

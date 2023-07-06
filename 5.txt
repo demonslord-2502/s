@@ -1,0 +1,30 @@
+ubuntu vm
+
+sudo systemctl status rsyslog
+
+
+sudo apt-get install rsyslog
+
+sudo nano /etc/rsyslog.conf
+
+Step 4: Uncomment above four lines that enable udp and tcp port binding
+
+
+Step 5: Add template right before GLOBAL DIRECTIVES section.
+$template remote-incoming- logs,"/var/log/%HOSTNAME%/%PROGRAMNAME%.log"
+*.* ?remote-incoming-logs
+
+module(load="imklog" permintnonkernelfacility="on")
+
+
+Step 6: Save and restart rsyslog service:
+“sudo systemctl restart rsyslog”
+
+ss -tunelp | grep 514
+
+sudo ufw allow 514/tcp
+
+sudo ufw allow 514/udp
+
+
+sudo rsyslogd -N1 -f /etc/rsyslog.conf

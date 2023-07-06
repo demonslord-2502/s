@@ -1,0 +1,25 @@
+Install and Configure ELK on Linux.
+
+sudo apt install default-jre
+
+java -version
+
+
+Part 2: Install and Configure the Elasticsearch
+
+curl -fsSL https://artifacts.elastic.co/GPG-KEY-elasticsearch | sudo apt-key add -
+
+echo "deb https://artifacts.elastic.co/packages/7.x/apt stable main" | sudo tee -a /etc/apt/sources.list.d/elastic-7.x.list
+
+sudo apt install elasticsearch
+
+“sudo nano /etc/elasticsearch/elasticsearch.yml”
+Uncomment 
+network.host:localhost
+http.port:9200
+
+sudo systemctl start elasticsearch
+
+sudo systemctl enable elasticsearch
+
+curl -X GET "localhost:9200"
